@@ -7,6 +7,7 @@ import kg.alfit.domain.valueobject.RestaurantId;
 import kg.alfit.order.service.domain.dto.create.request.CreateOrderCommand;
 import kg.alfit.order.service.domain.dto.create.request.OrderAddress;
 import kg.alfit.order.service.domain.dto.create.response.CreateOrderResponse;
+import kg.alfit.order.service.domain.dto.track.response.TrackOrderResponse;
 import kg.alfit.order.service.domain.entity.Order;
 import kg.alfit.order.service.domain.entity.OrderItem;
 import kg.alfit.order.service.domain.entity.Product;
@@ -44,10 +45,19 @@ public class OrderDataMapper {
                 .build();
     }
 
-    public CreateOrderResponse orderToCreateOrderResponse(Order order) {
+    public TrackOrderResponse orderToTrackOrderResponse(Order order) {
+       return TrackOrderResponse.builder()
+               .orderTrackingId(order.getTrackingId().getValue())
+               .orderStatus(order.getOrderStatus())
+               .failureMessages(order.getFailureMessages())
+               .build();
+    }
+
+    public CreateOrderResponse orderToCreateOrderResponse(Order order, String message) {
         return CreateOrderResponse.builder()
                 .orderTrackingId(order.getTrackingId().getValue())
                 .orderStatus(order.getOrderStatus())
+                .message(message)
                 .build();
     }
 
