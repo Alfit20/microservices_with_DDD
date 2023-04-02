@@ -66,6 +66,11 @@
             </dependency>
             <dependency>
                 <groupId>kg.alfit</groupId>
+                <artifactId>common-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>kg.alfit</groupId>
                 <artifactId>kafka-producer</artifactId>
                 <version>${project.version}</version>
             </dependency>
