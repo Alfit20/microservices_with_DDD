@@ -43,6 +43,13 @@ public class Order extends AggregateRoot<OrderId> {
         initializeOrderItems();
     }
 
+    private void initializeOrderItems() {
+        long itemId = 1L;
+        for (OrderItem orderItem : orderItems) {
+            orderItem.initializeOrderItem(super.getId(), new OrderItemId(itemId++));
+        }
+    }
+
     public void validateOrder() {
         validateInitialOrder();
         validateTotalPrice();
@@ -117,13 +124,6 @@ public class Order extends AggregateRoot<OrderId> {
     private void validateTotalPrice() {
         if (price == null || !price.isGreaterThanZero()) {
             throw new OrderDomainException("Total price must be greater than zero!");
-        }
-    }
-
-    private void initializeOrderItems() {
-        long itemId = 1L;
-        for (OrderItem orderItem : orderItems) {
-            orderItem.initializeOrderItem(super.getId(), new OrderItemId(itemId++));
         }
     }
 

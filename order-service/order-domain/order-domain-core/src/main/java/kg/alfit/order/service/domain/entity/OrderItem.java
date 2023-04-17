@@ -8,9 +8,20 @@ import kg.alfit.order.service.domain.valueobject.OrderItemId;
 public class OrderItem extends BaseEntity<OrderItemId> {
     private OrderId orderId;
     private final Product product;
-    private final Integer quantity;
+    private final int quantity;
     private final Money price;
     private final Money subTotal;
+
+    void initializeOrderItem(OrderId orderId, OrderItemId orderItemId) {
+        this.orderId = orderId;
+        super.setId(orderItemId);
+    }
+
+    boolean isPriceValid() {
+        return price.isGreaterThanZero() &&
+                price.equals(product.getPrice()) &&
+                price.multiply(quantity).equals(subTotal);
+    }
 
     private OrderItem(Builder builder) {
         super.setId(builder.orderItemId);
@@ -20,14 +31,8 @@ public class OrderItem extends BaseEntity<OrderItemId> {
         subTotal = builder.subTotal;
     }
 
-    boolean isPriceValid() {
-        return price.isGreaterThanZero() && price.equals(product.getPrice()) &&
-                price.multiply(quantity).equals(subTotal);
-    }
-
-    void initializeOrderItem(OrderId orderId, OrderItemId orderItemId) {
-        this.orderId = orderId;
-        super.setId(orderItemId);
+    public static Builder builder() {
+        return new Builder();
     }
 
 
@@ -39,7 +44,7 @@ public class OrderItem extends BaseEntity<OrderItemId> {
         return product;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -54,15 +59,11 @@ public class OrderItem extends BaseEntity<OrderItemId> {
     public static final class Builder {
         private OrderItemId orderItemId;
         private Product product;
-        private Integer quantity;
+        private int quantity;
         private Money price;
         private Money subTotal;
 
         private Builder() {
-        }
-
-        public static Builder builder() {
-            return new Builder();
         }
 
         public Builder orderItemId(OrderItemId val) {
@@ -75,7 +76,7 @@ public class OrderItem extends BaseEntity<OrderItemId> {
             return this;
         }
 
-        public Builder quantity(Integer val) {
+        public Builder quantity(int val) {
             quantity = val;
             return this;
         }

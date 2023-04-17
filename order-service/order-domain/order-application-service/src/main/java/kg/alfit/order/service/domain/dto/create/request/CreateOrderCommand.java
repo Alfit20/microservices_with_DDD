@@ -11,10 +11,9 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
 public class CreateOrderCommand {
-
     @NotNull
     private final UUID customerId;
 

@@ -72,7 +72,7 @@ public class OrderDataMapper {
 
     private List<OrderItem> orderItemsToOrderItemEntities(List<OrderItem> items) {
         return items.stream()
-                .map(orderItem -> OrderItem.Builder.builder()
+                .map(orderItem -> OrderItem.builder()
                         .product(new Product(new ProductId(orderItem.getProduct().getId().getValue())))
                         .price(new Money(orderItem.getPrice().getAmount()))
                         .quantity(orderItem.getQuantity())
