@@ -15,6 +15,7 @@
     <url>http://maven.apache.org</url>
     <modules>
         <module>payment-domain-core</module>
+        <module>payment-application-service</module>
     </modules>
 
 </project>
