@@ -1,6 +1,7 @@
 package kg.alfit.order.service.messaging.publisher.kafka;
 
 import kg.alfit.kafka.order.avro.model.PaymentRequestAvroModel;
+import kg.alfit.kafka.producer.helper.KafkaMessageHelper;
 import kg.alfit.kafka.producer.service.KafkaProducer;
 import kg.alfit.order.service.domain.config.OrderServiceConfigData;
 import kg.alfit.order.service.domain.event.OrderCancelledEvent;
@@ -18,7 +19,7 @@ public class CancelOrderKafkaMessagePublisher
     private final OrderMessagingDataMapper orderMessagingDataMapper;
     private final OrderServiceConfigData orderServiceConfigData;
     private final KafkaProducer<String, PaymentRequestAvroModel> kafkaProducer;
-    private final OrderKafkaMessageHelper orderKafkaMessageHelper;
+    private final KafkaMessageHelper kafkaMessageHelper;
 
     @Override
     public void publish(OrderCancelledEvent domainEvent) {
@@ -32,7 +33,7 @@ public class CancelOrderKafkaMessagePublisher
             kafkaProducer.send(orderServiceConfigData.getPaymentRequestTopicName(),
                     orderId,
                     paymentRequestAvroModel,
-                    orderKafkaMessageHelper.getKafkaCallback(
+                    kafkaMessageHelper.getKafkaCallback(
                             orderServiceConfigData.getPaymentResponseTopicName(),
                             paymentRequestAvroModel,
                             orderId,
