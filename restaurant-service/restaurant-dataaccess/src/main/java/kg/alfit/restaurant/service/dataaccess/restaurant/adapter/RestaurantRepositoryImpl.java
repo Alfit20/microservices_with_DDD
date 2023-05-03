@@ -1,10 +1,10 @@
-package kg.alfit.order.service.dataaccess.restaurant.adapter;
+package kg.alfit.restaurant.service.dataaccess.restaurant.adapter;
 
 import kg.alfit.dataaccess.restaurant.entity.RestaurantEntity;
 import kg.alfit.dataaccess.restaurant.repository.RestaurantJpaRepository;
-import kg.alfit.order.service.dataaccess.restaurant.mapper.RestaurantDataAccessMapper;
-import kg.alfit.order.service.domain.entity.Restaurant;
-import kg.alfit.order.service.domain.ports.output.repository.RestaurantRepository;
+import kg.alfit.restaurant.service.dataaccess.restaurant.mapper.RestaurantDataAccessMapper;
+import kg.alfit.restaurant.service.domain.entity.Restaurant;
+import kg.alfit.restaurant.service.domain.ports.output.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -20,10 +20,13 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     @Override
     public Optional<Restaurant> findRestaurantInformation(Restaurant restaurant) {
-        List<UUID> restaurantProducts = restaurantDataAccessMapper.restaurantToRestaurantProducts(restaurant);
+        List<UUID> restaurantProducts =
+                restaurantDataAccessMapper.restaurantToRestaurantProducts(restaurant);
         Optional<List<RestaurantEntity>> restaurantEntities =
-                restaurantJpaRepository.findByRestaurantIdAndProductIdIn(restaurant.getId().getValue(),
-                        restaurantProducts);
+                restaurantJpaRepository.findByRestaurantIdAndProductIdIn(
+                        restaurant.getId().getValue(),
+                        restaurantProducts
+                );
         return restaurantEntities.map(restaurantDataAccessMapper::restaurantEntityToRestaurant);
     }
 }
