@@ -14,4 +14,23 @@
     <name>restaurant-messaging</name>
     <url>http://maven.apache.org</url>
 
+    <dependencies>
+        <dependency>
+            <groupId>kg.alfit</groupId>
+            <artifactId>restaurant-application-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>kg.alfit</groupId>
+            <artifactId>kafka-producer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>kg.alfit</groupId>
+            <artifactId>kafka-consumer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>kg.alfit</groupId>
+            <artifactId>kafka-model</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
