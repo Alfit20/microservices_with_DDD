@@ -181,8 +181,8 @@ public class OrderApplicationServiceTest {
 
     @Test
     public void testCreateOrderWithPassiveRestaurant() {
-        Restaurant restaurant = Restaurant.Builder.builder()
-                .id(new RestaurantId(createOrderCommand.getRestaurantId()))
+        Restaurant restaurant = Restaurant.builder()
+                .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
                 .products(List.of(
                                 new Product(
                                         new ProductId(PRODUCT_ID), "product-1",

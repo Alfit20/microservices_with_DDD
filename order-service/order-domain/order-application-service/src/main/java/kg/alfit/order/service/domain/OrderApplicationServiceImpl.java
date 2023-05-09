@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 @Slf4j
-@Validated
 @Service
+@Validated
 @RequiredArgsConstructor
-class OrderApplicationServiceImpl implements OrderApplicationService {
+public class OrderApplicationServiceImpl implements OrderApplicationService {
     private final OrderCreateCommandHandler orderCreateCommandHandler;
     private final OrderTrackCommandHandler orderTrackCommandHandler;
 

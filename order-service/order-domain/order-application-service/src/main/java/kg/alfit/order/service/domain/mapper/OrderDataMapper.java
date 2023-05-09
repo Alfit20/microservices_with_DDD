@@ -22,14 +22,13 @@ import java.util.stream.Collectors;
 @Component
 public class OrderDataMapper {
     public Restaurant createOrderCommandToRestaurant(CreateOrderCommand createOrderCommand) {
-        return Restaurant.Builder.builder()
-                .id(new RestaurantId(createOrderCommand.getRestaurantId()))
+        return Restaurant.builder()
+                .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
                 .products(
                         createOrderCommand.getItems().stream()
                                 .map(orderItem ->
                                         new Product(
-                                                new ProductId(orderItem.getProduct()
-                                                        .getId().getValue()))
+                                                new ProductId(orderItem.getProductId()))
                                 )
                                 .collect(Collectors.toList()))
                 .build();
@@ -70,16 +69,14 @@ public class OrderDataMapper {
         );
     }
 
-    private List<OrderItem> orderItemsToOrderItemEntities(List<OrderItem> items) {
-        return items.stream()
-                .map(orderItem -> OrderItem.builder()
-                        .product(new Product(new ProductId(orderItem.getProduct().getId().getValue())))
-                        .price(new Money(orderItem.getPrice().getAmount()))
-                        .quantity(orderItem.getQuantity())
-                        .subTotal(new Money(orderItem.getSubTotal().getAmount()))
-                        .build())
-                .collect(Collectors.toList());
+    private List<OrderItem> orderItemsToOrderItemEntities(List<kg.alfit.order.service.domain.dto.create.request.OrderItem> orderItems) {
+        return orderItems.stream()
+                .map(orderItem ->
+                        OrderItem.builder()
+                                .product(new Product(new ProductId(orderItem.getProductId())))
+                                .price(new Money(orderItem.getPrice()))
+                                .quantity(orderItem.getQuantity())
+                                .subTotal(new Money(orderItem.getSubTotal()))
+                                .build()).collect(Collectors.toList());
     }
-
-
 }

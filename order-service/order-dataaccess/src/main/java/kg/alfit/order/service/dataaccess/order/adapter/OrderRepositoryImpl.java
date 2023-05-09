@@ -1,5 +1,6 @@
 package kg.alfit.order.service.dataaccess.order.adapter;
 
+import kg.alfit.domain.valueobject.OrderId;
 import kg.alfit.order.service.dataaccess.order.mapper.OrderDataAccessMapper;
 import kg.alfit.order.service.dataaccess.order.repository.OrderJpaRepository;
 import kg.alfit.order.service.domain.entity.Order;
@@ -26,5 +27,10 @@ public class OrderRepositoryImpl implements OrderRepository {
     public Optional<Order> findByTrackingId(TrackingId trackingId) {
         return orderJpaRepository.findByTrackingId(trackingId.getValue())
                 .map(orderDataAccessMapper::orderEntityToOrder);
+    }
+
+    @Override
+    public Optional<Order> findById(OrderId orderId) {
+        return orderJpaRepository.findById(orderId.getValue()).map(orderDataAccessMapper::orderEntityToOrder);
     }
 }

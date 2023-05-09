@@ -11,6 +11,11 @@
         <option value="$PROJECT_DIR$/restaurant-service/restaurant-domain/pom.xml" />
         <option value="$PROJECT_DIR$/restaurant-service/restaurant-dataaccess/pom.xml" />
         <option value="$PROJECT_DIR$/restaurant-service/restaurant-container/pom.xml" />
+        <option value="$PROJECT_DIR$/payment-service/payment-container/pom.xml" />
+        <option value="$PROJECT_DIR$/payment-service/payment-dataaccess/pom.xml" />
+        <option value="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/pom.xml" />
+        <option value="$PROJECT_DIR$/payment-service/payment-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/payment-service/payment-messaging/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

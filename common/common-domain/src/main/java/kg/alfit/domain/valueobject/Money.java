@@ -6,14 +6,11 @@ import java.util.Objects;
 
 public class Money {
     private final BigDecimal amount;
+
     public static final Money ZERO = new Money(BigDecimal.ZERO);
 
     public Money(BigDecimal amount) {
         this.amount = amount;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
     }
 
     public boolean isGreaterThanZero() {
@@ -36,6 +33,10 @@ public class Money {
         return new Money(setScale(this.amount.multiply(new BigDecimal(multiplier))));
     }
 
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,7 +51,6 @@ public class Money {
     }
 
     private BigDecimal setScale(BigDecimal input) {
-        // 5.70 or 6.80
         return input.setScale(2, RoundingMode.HALF_EVEN);
     }
 }
