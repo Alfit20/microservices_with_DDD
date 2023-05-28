@@ -1,7 +1,6 @@
 package kg.alfit.order.service.domain;
 
 import kg.alfit.order.service.domain.event.OrderCreatedEvent;
-import kg.alfit.order.service.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

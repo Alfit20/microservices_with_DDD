@@ -4,7 +4,6 @@ import kg.alfit.order.service.domain.dto.create.request.CreateOrderCommand;
 import kg.alfit.order.service.domain.dto.create.response.CreateOrderResponse;
 import kg.alfit.order.service.domain.event.OrderCreatedEvent;
 import kg.alfit.order.service.domain.mapper.OrderDataMapper;
-import kg.alfit.order.service.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

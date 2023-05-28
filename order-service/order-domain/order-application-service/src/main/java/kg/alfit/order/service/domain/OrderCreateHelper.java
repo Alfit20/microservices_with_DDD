@@ -7,7 +7,6 @@ import kg.alfit.order.service.domain.entity.Restaurant;
 import kg.alfit.order.service.domain.event.OrderCreatedEvent;
 import kg.alfit.order.service.domain.exception.OrderDomainException;
 import kg.alfit.order.service.domain.mapper.OrderDataMapper;
-import kg.alfit.order.service.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
 import kg.alfit.order.service.domain.ports.output.repository.CustomerRepository;
 import kg.alfit.order.service.domain.ports.output.repository.OrderRepository;
 import kg.alfit.order.service.domain.ports.output.repository.RestaurantRepository;

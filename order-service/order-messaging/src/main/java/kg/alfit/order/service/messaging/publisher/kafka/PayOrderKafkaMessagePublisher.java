@@ -1,11 +1,11 @@
 package kg.alfit.order.service.messaging.publisher.kafka;
 
+import kg.alfit.domain.event.publisher.DomainEventPublisher;
 import kg.alfit.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
 import kg.alfit.kafka.producer.helper.KafkaMessageHelper;
 import kg.alfit.kafka.producer.service.KafkaProducer;
 import kg.alfit.order.service.domain.config.OrderServiceConfigData;
 import kg.alfit.order.service.domain.event.OrderPaidEvent;
-import kg.alfit.order.service.domain.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
 import kg.alfit.order.service.messaging.mapper.OrderMessagingDataMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class PayOrderKafkaMessagePublisher implements OrderPaidRestaurantRequestMessagePublisher {
+public class PayOrderKafkaMessagePublisher implements DomainEventPublisher<OrderPaidEvent> {
     private final OrderMessagingDataMapper orderMessagingDataMapper;
     private final OrderServiceConfigData orderServiceConfigData;
     private final KafkaProducer<String, RestaurantApprovalRequestAvroModel> kafkaProducer;

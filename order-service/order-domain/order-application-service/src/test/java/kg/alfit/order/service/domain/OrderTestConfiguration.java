@@ -1,12 +1,8 @@
 package kg.alfit.order.service.domain;
 
-import kg.alfit.order.service.domain.ports.output.message.publisher.payment.OrderCancelledPaymentRequestMessagePublisher;
-import kg.alfit.order.service.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
-import kg.alfit.order.service.domain.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
 import kg.alfit.order.service.domain.ports.output.repository.CustomerRepository;
 import kg.alfit.order.service.domain.ports.output.repository.OrderRepository;
 import kg.alfit.order.service.domain.ports.output.repository.RestaurantRepository;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

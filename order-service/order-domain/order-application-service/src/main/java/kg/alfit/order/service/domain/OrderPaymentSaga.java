@@ -4,7 +4,6 @@ import kg.alfit.domain.event.EmptyEvent;
 import kg.alfit.order.service.domain.dto.response.PaymentResponse;
 import kg.alfit.order.service.domain.entity.Order;
 import kg.alfit.order.service.domain.event.OrderPaidEvent;
-import kg.alfit.order.service.domain.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
 import kg.alfit.saga.SagaStep;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
